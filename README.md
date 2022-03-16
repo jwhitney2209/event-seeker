@@ -1,4 +1,4 @@
-# Event Seeker
+# Event Seeker:round_pushpin:
 
 ## Purpose❗
 USER STORY:
