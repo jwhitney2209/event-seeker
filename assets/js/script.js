@@ -1,9 +1,10 @@
+var userFormEl = document.querySelector("#user-form")
 var cityInputEl = document.querySelector("#city-name");
 var eventContainerEl = document.querySelector("#event-container")
 
 var getLocationEvents = function(city) {
  // format ticketmaster api url
-  var apiUrl = "https://app.ticketmaster.com/discovery/v2/events.json?size=5&" + city + "&apikey=bQAmmn8y0TYxPWEysqGkzSsdLE6iLGOx";
+  var apiUrl = "https://app.ticketmaster.com/discovery/v2/events.json?size=5&city=" + city + "&apikey=bQAmmn8y0TYxPWEysqGkzSsdLE6iLGOx";
 
   // make request
   fetch(apiUrl).then(function(response){
@@ -18,7 +19,7 @@ var getLocationEvents = function(city) {
   })
   .catch(function(error) {
     // replace this alert with a function that changes the DOM with a Connection Error message
-    alert("unable to connect to github")
+    alert("unable to connect to")
   })
 };
 
@@ -40,5 +41,9 @@ var formSubmitHandler = function(event) {
 };
 
 
-var displayEvents = function(){};
-// getLocationEvents();
+var displayEvents = function(){
+
+};
+
+userFormEl.addEventListener("submit", formSubmitHandler);
+getLocationEvents();
