@@ -1,4 +1,4 @@
-# Event Seeker
+# Event Seeker:round_pushpin:
 
 ## Purpose❗
 USER STORY:
@@ -38,3 +38,4 @@ USER STORY:
 
  <a name="help"></a>
   ## 5. Helpful Links:link:
+https://www.geeksforgeeks.org/bulma-list/
