@@ -2,9 +2,17 @@ var userFormEl = document.querySelector("#user-form")
 var cityInputEl = document.querySelector("#city-name");
 var eventContainerEl = document.querySelector("#event-container")
 
+// Get Weather API
+
+// Dynamically add to DOM Weather Information
+
+// Dynamically add to DOM Event List
+
+
+
 var getLocationEvents = function(city) {
  // format ticketmaster api url
-  var apiUrl = "https://app.ticketmaster.com/discovery/v2/events.json?size=5&city=" + city + "&apikey=bQAmmn8y0TYxPWEysqGkzSsdLE6iLGOx";
+  var apiUrl = "https://app.ticketmaster.com/discovery/v2/events.json?size=5&city=" + city + "&sort=date%2Cname%2Casc&apikey=bQAmmn8y0TYxPWEysqGkzSsdLE6iLGOx";
 
   // make request
   fetch(apiUrl).then(function(response){
