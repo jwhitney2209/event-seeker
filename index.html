@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <title>Event Seeker</title>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="event-seeker/assets/css/style.css">
-  <title>Event Seeker</title>
 </head>
+
 <body>
-  <header>
-    <h1>Event Seeker</h1>
-  </header>
- <!--type in city name-->
- <main class="city-name">
-  <!-- User Input Form Start -->
-  <div class="city">
-    <div>
-      <!-- add classes from bulma for h3 -->
-      <h3 class="">Search by City</h3>
-      <form id="user-form" class="">
-        <label class="" for="city-name"></label>
-        <input name="city" id="city-name" type="text" autofocus="true" class="city-search" />
-        <button type="submit" class="button is-primary">Find Events</button>
-      </form>
+  <header class="container hero is-primary mb-4">
+    <div class="hero-body">
+      <p class="title is-1"><span class="icon">
+          <i class="fas fa-calendar"></i>
+        </span> Event Seeker</p>
+      <p class="subtitle is-4">Search for a city to see weather forecast and events</p>
     </div>
-  </div>
-  <!-- User Input Form End -->
-  <!-- Event List Start -->
-  <div id="" class="">
+  </header>
+  <!--type in city name-->
+  <main class="container">
+    <!-- User Input Form Start -->
+    <div class="columns is-multiline">
+      <div class="column is-one-quarter" id="user-form">
+        <!-- add classes from bulma for h3 -->
+        <label class="label">Search by City</label>
+        <div class="control">
+          <input id="city-name" class="input" type="text" placeholder="ex: San Antonio">
+        </div>
+        <div class="control">
+          <button class="button is-primary mt-2" id="search-btn">Find Events</button>
+        </div>
 
-  </div>
-  <!-- Event List End -->
-  <!-- Weather Dashboard Start -->
-  <div id="" class="city-weather">
+      </div>
+      <!-- Event List Start -->
+      <div class="column is-half" id="event-list">
 
-  </div>
-  <!-- Weather Dashboard End -->
-</main>
+      </div>
+      <!-- weather for searched city -->
+      <div class="column is-one-quarter" id="weather"></div>
 
-  
-  
+    </div>
+  </main>
 
-
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="event-seeker/assets/js/script.js"></script>
 </body>
+<footer></footer>
+
 </html>
