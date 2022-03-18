@@ -3,7 +3,6 @@ var submitButtonEl = document.querySelector("#search-btn");
 var eventContainerEl = document.querySelector("#event-list");
 var eventCityEl = document.querySelector("#city-search")
 var cityInputEl = document.querySelector("#city-name");
-
 var dateInputEl = document.querySelector("#datepicker")
 
 
@@ -54,27 +53,37 @@ function showEvents(json) {
 
 
   for (var i=0;i< 5; i++) {
+    // event box
+    var eventBoxEl = document.createElement("div");
+    eventBoxEl.classList = "box";
+    eventBoxEl.setAttribute("id", "event-list-box")
+
     // event title 
     var eventTitleEl = document.createElement("p");
-    eventTitleEl.classList = "title is-5"
-    eventTitleEl.setAttribute("id", "event-title")
+    eventTitleEl.classList = "title is-5";
+    eventTitleEl.setAttribute("id", "event-title");
     eventTitleEl.textContent = events[i].name;
     
     // event date
     var eventDateEl = document.createElement("p");
-    eventDateEl.classList = "subtitle"
-    eventDateEl.setAttribute("id", "event-date")
-    eventDateEl.textContent = events[i].dates.start.localDate;
+    eventDateEl.classList = "subtitle is-6";
+    eventDateEl.setAttribute("id", "event-date");
+    eventDateEl.textContent = "Date: " + events[i].dates.start.localDate;
 
     // event venue
     var eventVenueEl = document.createElement("p");
-    eventVenueEl.classList = "subtitle is-6"
-    eventVenueEl.setAttribute("id", "event-venue")
+    eventVenueEl.classList = "subtitle is-6 mb-4";
+    eventVenueEl.setAttribute("id", "event-venue");
     eventVenueEl.textContent = events[i]._embedded.venues[0].name;
 
-    eventContainerEl.append(eventTitleEl);
-    eventContainerEl.append(eventDateEl);
-    eventContainerEl.append(eventVenueEl);
+    // get tickets
+    var getTicketEl = document.createElement("button")
+
+    eventBoxEl.append(eventTitleEl);
+    eventBoxEl.append(eventDateEl);
+    eventBoxEl.append(eventVenueEl);
+
+    eventContainerEl.append(eventBoxEl);
   };
 
 
