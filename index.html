@@ -6,8 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
-  <link rel="stylesheet" href="event-seeker/assets/css/style.css">
+  <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/solar/bulmaswatch.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
       <p class="title is-1"><span class="icon">
           <i class="fas fa-calendar"></i>
         </span> Event Seeker</p>
-      <p class="subtitle is-4">Search for a city to see weather forecast and events</p>
+      <p class="subtitle is-3">Search for a city to see weather forecast and events</p>
     </div>
   </header>
   <!--type in city name-->
@@ -25,12 +25,12 @@
     <div class="columns is-multiline">
       <div class="column is-one-quarter" id="user-form">
         <!-- add classes from bulma for h3 -->
-        <label class="label">Search by City</label>
+        <label class="label mt-4">Search by City</label>
         <div class="control">
           <input id="city-name" class="input" type="text" placeholder="ex: San Antonio">
         </div>
         <div class="control">
-          <button class="button is-primary mt-2" id="search-btn">Find Events</button>
+          <button class="button is-primary mt-4 mb-4" id="search-btn">Find Events</button>
         </div>
 
       </div>
@@ -45,8 +45,9 @@
   </main>
 
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="event-seeker/assets/js/script.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
 <footer></footer>
 
