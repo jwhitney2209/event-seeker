@@ -1,10 +1,10 @@
 var userFormEl = document.querySelector("#user-form");
 var submitButtonEl = document.querySelector("#search-btn");
 var eventContainerEl = document.querySelector("#event-list");
+var eventCityEl = document.querySelector("#city-search")
 var cityInputEl = document.querySelector("#city-name");
-
 var dateInputEl = document.querySelector("#datepicker")
-var eventContainerEl = $('#event-list');
+
 
 $(function() {
   $("#datepicker").datepicker({
@@ -16,9 +16,6 @@ $(function() {
 // Get Weather API
 
 // Dynamically add to DOM Weather Information
-
-// "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=bQAmmn8y0TYxPWEysqGkzSsdLE6iLGOx&city="+city+"&sort=date%2Cname%2Casc&page=0&size=5";
-
 function getEvents(city, startdate) {
   $.ajax({
     type:"GET",
@@ -43,43 +40,63 @@ var formSubmitHandler = function(event) {
   if (cityname, getStartDate) {
     getEvents(cityname, getStartDate);
   } else {
-    eventContainerEl.innerHTML = "<p class='title'>City Not Found, Please Enter Valid City Name</p>"
+    eventContainerEl.textContent = "City Not Found, Please Enter Valid City Name";
   };
 };
 
 
 // Dynamically add to DOM Event List
-
-// events[i].name
-// events[i].dates.start.localDate
-// events[i]._embedded.venues[0].name
-
 function showEvents(json) {
+  if (json.length === 0) {
+    eventContainerEl.textContent = "No Events Found";
+    return;
+  }
+  eventContainerEl.textContent = "";
+
   var events = json._embedded.events;
 
+  var eventListCity = cityInputEl.value.trim();
+  eventCityEl.textContent = "Showing Results for: "+eventListCity+".";
+
+  // loop over events
   for (var i=0;i< 5; i++) {
+    // event box
+    var eventBoxEl = document.createElement("div");
+    eventBoxEl.classList = "box";
+    eventBoxEl.setAttribute("id", "event-list-box")
+
     // event title 
     var eventTitleEl = document.createElement("p");
-    eventTitleEl.classList = "title is-5"
-    eventTitleEl.setAttribute("id", "event-title")
+    eventTitleEl.classList = "title is-5";
+    eventTitleEl.setAttribute("id", "event-title");
     eventTitleEl.textContent = events[i].name;
     
     // event date
     var eventDateEl = document.createElement("p");
-    eventDateEl.classList = "subtitle"
-    eventDateEl.setAttribute("id", "event-date")
-    eventDateEl.textContent = events[i].dates.start.localDate;
+    eventDateEl.classList = "subtitle is-6";
+    eventDateEl.setAttribute("id", "event-date");
+    eventDateEl.textContent = "Date: " + events[i].dates.start.localDate;
 
     // event venue
     var eventVenueEl = document.createElement("p");
-    eventVenueEl.classList = "subtitle is-6"
-    eventVenueEl.setAttribute("id", "event-venue")
+    eventVenueEl.classList = "subtitle is-6 mb-4";
+    eventVenueEl.setAttribute("id", "event-venue");
     eventVenueEl.textContent = events[i]._embedded.venues[0].name;
 
-    eventContainerEl.append(eventTitleEl);
-    eventContainerEl.append(eventDateEl);
-    eventContainerEl.append(eventVenueEl);
-  }
+    // get tickets
+    var getTicketEl = document.createElement("button");
+    getTicketEl.classList = "button is-info";
+    getTicketEl.setAttribute("id", "ticketsBtn");
+    getTicketEl.innerHTML = "<a href='"+events[i].url+"' target='_blank'>Get Tickets</a>";
+
+    eventBoxEl.append(eventTitleEl);
+    eventBoxEl.append(eventDateEl);
+    eventBoxEl.append(eventVenueEl);
+    eventBoxEl.append(getTicketEl);
+
+    eventContainerEl.append(eventBoxEl);
+  };
+
 
 }
 
