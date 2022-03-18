@@ -3,6 +3,7 @@ var submitButtonEl = document.querySelector("#search-btn");
 var eventContainerEl = document.querySelector("#event-list");
 var eventCityEl = document.querySelector("#city-search")
 var cityInputEl = document.querySelector("#city-name");
+
 var dateInputEl = document.querySelector("#datepicker")
 
 
