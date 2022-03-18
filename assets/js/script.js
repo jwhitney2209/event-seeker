@@ -40,18 +40,25 @@ var formSubmitHandler = function(event) {
   if (cityname, getStartDate) {
     getEvents(cityname, getStartDate);
   } else {
-    console.log("City Not Found, Please Enter Valid City Name");
+    eventContainerEl.textContent = "City Not Found, Please Enter Valid City Name";
   };
 };
 
 
 // Dynamically add to DOM Event List
 function showEvents(json) {
+  if (json.length === 0) {
+    eventContainerEl.textContent = "No Events Found";
+    return;
+  }
+  eventContainerEl.textContent = "";
+
   var events = json._embedded.events;
+
   var eventListCity = cityInputEl.value.trim();
   eventCityEl.textContent = "Showing Results for: "+eventListCity+".";
 
-
+  // loop over events
   for (var i=0;i< 5; i++) {
     // event box
     var eventBoxEl = document.createElement("div");
@@ -77,11 +84,15 @@ function showEvents(json) {
     eventVenueEl.textContent = events[i]._embedded.venues[0].name;
 
     // get tickets
-    var getTicketEl = document.createElement("button")
+    var getTicketEl = document.createElement("button");
+    getTicketEl.classList = "button is-info";
+    getTicketEl.setAttribute("id", "ticketsBtn");
+    getTicketEl.innerHTML = "<a href='"+events[i].url+"' target='_blank'>Get Tickets</a>";
 
     eventBoxEl.append(eventTitleEl);
     eventBoxEl.append(eventDateEl);
     eventBoxEl.append(eventVenueEl);
+    eventBoxEl.append(getTicketEl);
 
     eventContainerEl.append(eventBoxEl);
   };
