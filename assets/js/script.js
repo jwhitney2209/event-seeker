@@ -1,7 +1,13 @@
-var userFormEl = document.querySelector("#user-form")
-var submitButtonEl = document.querySelector("#search-btn")
-var eventContainerEl = document.querySelector("#event-list")
+var userFormEl = document.querySelector("#user-form");
+var submitButtonEl = document.querySelector("#search-btn");
+var eventContainerEl = document.querySelector("#event-list");
 var cityInputEl = document.querySelector("#city-name");
+
+$("#datepicker").datepicker({
+  minDate: 1
+}).formatDate("yy-mm-dd");
+
+
 // Get Weather API
 
 // Dynamically add to DOM Weather Information
@@ -34,13 +40,14 @@ var formSubmitHandler = function(event) {
   } else {
     eventContainerEl.innerHTML = "<p class='title'>City Not Found, Please Enter Valid City Name</p>"
   };
+  // code here for datepicker
+  // var getDate = 
 };
 
 // Dynamically add to DOM Event List
 
 function showEvents(json) {
   var items = $('#event-list .column');
-  items.hide();
   var events = json._embedded.events;
   console.log(events)
   var item = items.first();
@@ -52,17 +59,6 @@ function showEvents(json) {
     } catch (err) {
       console.log(err);
     }
-    item.show();
-    item.off("click");
-    item.click(events[i], function(eventObject) {
-      console.log(eventObject.data);
-      try {
-        getAttraction(eventObject.data._embedded.attractions[0].id);
-      } catch (err) {
-      console.log(err);
-      }
-    });
-    item=item.next();
   }
 }
 
