@@ -10,19 +10,19 @@ var cityInputEl = document.querySelector("#city-name");
 
 // set variables for specific data  "var eventInfo = _embedded.events"
 
-// function getEvents(city) {
-//   var apiUrl = "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=bQAmmn8y0TYxPWEysqGkzSsdLE6iLGOx&city="+city+"&sort=date%2Cname%2Casc&page=0&size=5";
+function getEvents(city) {
+  var apiUrl = "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=bQAmmn8y0TYxPWEysqGkzSsdLE6iLGOx&city="+city+"&sort=date%2Cname%2Casc&page=0&size=5";
 
-//   fetch(apiUrl).then(function(response){
-//     if (response.ok) {
-//       response.json().then(function(data){
-//         console.log(data);
-//       });
-//     } else {
-//       $("#event-list").text("<p class='title'>Error: City Not Found</p>");
-//     }
-//   })
-// };
+  fetch(apiUrl).then(function(response){
+    if (response.ok) {
+      response.json().then(function(data){
+        console.log(data);
+      });
+    } else {
+      $("#event-list").text("<p class='title'>Error: City Not Found</p>");
+    }
+  })
+};
 
 var formSubmitHandler = function(event) {
   event.preventDefault();
