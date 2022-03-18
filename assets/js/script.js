@@ -1,57 +1,86 @@
-var userFormEl = document.querySelector("#user-form")
+var userFormEl = document.querySelector("#user-form");
+var submitButtonEl = document.querySelector("#search-btn");
+var eventContainerEl = document.querySelector("#event-list");
 var cityInputEl = document.querySelector("#city-name");
-var eventContainerEl = document.querySelector("#event-container")
+
+var dateInputEl = document.querySelector("#datepicker")
+var eventContainerEl = $('#event-list');
+
+$(function() {
+  $("#datepicker").datepicker({
+    minDate: 1,
+    dateFormat: "yy-mm-dd"
+  });
+});
 
 // Get Weather API
 
 // Dynamically add to DOM Weather Information
 
-// Dynamically add to DOM Event List
+// "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=bQAmmn8y0TYxPWEysqGkzSsdLE6iLGOx&city="+city+"&sort=date%2Cname%2Casc&page=0&size=5";
 
-
-
-var getLocationEvents = function(city) {
- // format ticketmaster api url
-  var apiUrl = "https://app.ticketmaster.com/discovery/v2/events.json?size=5&city=" + city + "&sort=date%2Cname%2Casc&apikey=bQAmmn8y0TYxPWEysqGkzSsdLE6iLGOx";
-
-  // make request
-  fetch(apiUrl).then(function(response){
-    if (response.ok) {
-      response.json().then(function(data){
-        displayEvents(data, city);
-      });
-    } else {
-      // replace the alert with a function that changes the DOM with a City Not Found message
-      alert("Error: City not found");
-    }
-  })
-  .catch(function(error) {
-    // replace this alert with a function that changes the DOM with a Connection Error message
-    alert("unable to connect to")
-  })
+function getEvents(city, startdate) {
+  $.ajax({
+    type:"GET",
+    url:"https://app.ticketmaster.com/discovery/v2/events.json?&apikey=bQAmmn8y0TYxPWEysqGkzSsdLE6iLGOx&city="+city+"&startEndDateTime="+startdate+"T14%3A00%3A00Z&sort=date%2Cname%2Casc&page=0&size=5",
+    async:true,
+    dataType: "json",
+    success: function(json) {
+          getEvents.json = json;
+  			  showEvents(json);
+  		   },
+    error: function(xhr, status, err) {
+  			  console.log(err);
+  		   }
+  });
 };
-
-// Handle Form Submission
 
 var formSubmitHandler = function(event) {
   event.preventDefault();
-
-  // get user inpout
-  var cityName = cityInputEl.value.trim();
-
-  if (cityName) {
-    getLocationEvents(cityName);
-    cityInputEl.value ="";
+  // get city name
+  var cityname = cityInputEl.value.trim();
+  var getStartDate = dateInputEl.value.trim();
+  if (cityname, getStartDate) {
+    getEvents(cityname, getStartDate);
   } else {
-    // replace this alert with a function that changes the dom with a connect error message
-    alert("Please Enter a City");
+    eventContainerEl.innerHTML = "<p class='title'>City Not Found, Please Enter Valid City Name</p>"
+  };
+};
+
+
+// Dynamically add to DOM Event List
+
+// events[i].name
+// events[i].dates.start.localDate
+// events[i]._embedded.venues[0].name
+
+function showEvents(json) {
+  var events = json._embedded.events;
+
+  for (var i=0;i< 5; i++) {
+    // event title 
+    var eventTitleEl = document.createElement("p");
+    eventTitleEl.classList = "title is-5"
+    eventTitleEl.setAttribute("id", "event-title")
+    eventTitleEl.textContent = events[i].name;
+    
+    // event date
+    var eventDateEl = document.createElement("p");
+    eventDateEl.classList = "subtitle"
+    eventDateEl.setAttribute("id", "event-date")
+    eventDateEl.textContent = events[i].dates.start.localDate;
+
+    // event venue
+    var eventVenueEl = document.createElement("p");
+    eventVenueEl.classList = "subtitle is-6"
+    eventVenueEl.setAttribute("id", "event-venue")
+    eventVenueEl.textContent = events[i]._embedded.venues[0].name;
+
+    eventContainerEl.append(eventTitleEl);
+    eventContainerEl.append(eventDateEl);
+    eventContainerEl.append(eventVenueEl);
   }
-};
 
-
-var displayEvents = function(){
-
-};
+}
 
 userFormEl.addEventListener("submit", formSubmitHandler);
-getLocationEvents();
