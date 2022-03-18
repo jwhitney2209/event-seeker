@@ -1,6 +1,7 @@
 var userFormEl = document.querySelector("#user-form")
+var submitButtonEl = document.querySelector("#search-btn")
 var cityInputEl = document.querySelector("#city-name");
-var eventContainerEl = document.querySelector("#event-container")
+var eventContainerEl = document.querySelector("#event-list")
 
 // Get Weather API
 
@@ -8,28 +9,37 @@ var eventContainerEl = document.querySelector("#event-container")
 
 // Dynamically add to DOM Event List
 
+// set variables for specific data  "var eventInfo = _embedded.events"
 
+function getEvents(page) {
 
-var getLocationEvents = function(city) {
- // format ticketmaster api url
-  var apiUrl = "https://app.ticketmaster.com/discovery/v2/events.json?size=5&city=" + city + "&sort=date%2Cname%2Casc&apikey=bQAmmn8y0TYxPWEysqGkzSsdLE6iLGOx";
+  $('#events-panel').show();
+  $('#attraction-panel').hide();
 
-  // make request
-  fetch(apiUrl).then(function(response){
-    if (response.ok) {
-      response.json().then(function(data){
-        displayEvents(data, city);
-      });
-    } else {
-      // replace the alert with a function that changes the DOM with a City Not Found message
-      alert("Error: City not found");
+  if (page < 0) {
+    page = 0;
+    return;
+  }
+  if (page > 0) {
+    if (page > getEvents.json.page.totalPages-1) {
+      page=0;
     }
-  })
-  .catch(function(error) {
-    // replace this alert with a function that changes the DOM with a Connection Error message
-    alert("unable to connect to")
-  })
-};
+  }
+  
+  $.ajax({
+    type:"GET",
+    url:"https://app.ticketmaster.com/discovery/v2/events.json?apikey=bQAmmn8y0TYxPWEysqGkzSsdLE6iLGOx&size=5&page="+page,
+    async:true,
+    dataType: "json",
+    success: function(json) {
+          getEvents.json = json;
+  			  showEvents(json);
+  		   },
+    error: function(xhr, status, err) {
+  			  console.log(err);
+  		   }
+  });
+}
 
 // Handle Form Submission
 
@@ -53,5 +63,5 @@ var displayEvents = function(){
 
 };
 
-userFormEl.addEventListener("submit", formSubmitHandler);
+submitButtonEl.addEventListener("submit", formSubmitHandler);
 getLocationEvents();
