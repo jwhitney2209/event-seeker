@@ -6,13 +6,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/solar/bulmaswatch.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
 
-  <header class="container hero is-primary mb-4">
+  <header class="container hero is-warning mb-4">
     <div class="hero-body">
       <p class="title is-1"><span class="icon">
           <i class="fas fa-calendar"></i>
@@ -31,17 +33,15 @@
         </div>
         <div id="date-selection" class="control">
           <label class="label mt-2" for="datepicker">Select Your Date</label>
-            <input type="text" class="input" id="datepicker" placeholder="mm/dd/yyyy" autocomplete="off">
+            <input type="text" class="input" id="datepicker" placeholder="Date" autocomplete="off">
         </div>
         <div class="control">
-          <button class="button is-primary mt-2" id="search-btn">Find Events</button>
+          <button class="button is-warning mt-2" id="search-btn">Find Events</button>
         </div>
       </form>
       <!-- Event List Container Start -->
       <div class="column is-half" id="event-list">
-        <p id="event-title" class="title is-5"></p>
-        <p id="event-info" class="subtitle"></p>
-        <p id="event-venue" class="subtitle is-6"></p>
+        <p class="title">Upcoming Events in: <span id="city-search-term"></span></p>
       </div>
       <!-- Weather Container Start -->
       <div class="column is-one-quarter" id="weather"></div>
@@ -50,8 +50,8 @@
 
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
-<footer></footer>
-
 </html>
