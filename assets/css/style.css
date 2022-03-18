@@ -1,28 +1,13 @@
-:root {
-    --primary: #d2dff7;
-    --secondary: #a6d7f3;
-    --tertiary: #3ca3aa;
-    --light-dark: #64757c;
-    --dark: #2c353a;
-    --border-radius: .5rem;
-  }
-  
-  h1 {
-    width: 100%;
-    margin-top: 70px;
-    color: rgb(167, 215, 221) !important
+.label:not(:last-child) {
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
 }
-
-.title {
-    color: #d5ece6;
-    font-size: 2rem;
-    font-weight: 600;
-    line-height: 1.125;
-    padding-top: 20px;
+.input, .textarea {
+  transition: all 200ms ease;
+  box-shadow: none;
+  border-width: 2px;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-bottom: 12px;
 }
-
-  main {
-    margin: 20px auto;
-    width: 94%;
-  }
   
