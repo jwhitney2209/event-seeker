@@ -2,6 +2,7 @@ var userFormEl = document.querySelector("#user-form");
 var submitButtonEl = document.querySelector("#search-btn");
 var eventContainerEl = document.querySelector("#event-list");
 var cityInputEl = document.querySelector("#city-name");
+
 var dateInputEl = document.querySelector("#datepicker")
 var eventContainerEl = $('#event-list');
 
@@ -15,8 +16,6 @@ $(function() {
 // Get Weather API
 
 // Dynamically add to DOM Weather Information
-
-var dataArr = [1, 2, 3, 4, 5];
 
 // "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=bQAmmn8y0TYxPWEysqGkzSsdLE6iLGOx&city="+city+"&sort=date%2Cname%2Casc&page=0&size=5";
 
