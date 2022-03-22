@@ -1,11 +1,16 @@
+// declared variables
 var userFormEl = document.querySelector("#user-form");
 var submitButtonEl = document.querySelector("#search-btn");
 var eventContainerEl = document.querySelector("#event-list");
 var eventCityEl = document.querySelector("#city-search")
 var cityInputEl = document.querySelector("#city-name");
 var dateInputEl = document.querySelector("#datepicker")
+var recentSearchEl = document.querySelector("#recent-searches");
 
+var searchHistory = [];
+var searchDate = [];
 
+// datepicker for selecting event day user is looking for
 $(function() {
   $("#datepicker").datepicker({
     minDate: 0,
@@ -79,18 +84,7 @@ function getWeather(coord) {
   });
 };
 
-var formSubmitHandler = function(event) {
-  event.preventDefault();
-  // get city name
-  var cityname = cityInputEl.value.trim();
-  var getStartDate = dateInputEl.value.trim();
-  if (cityname, getStartDate) {
-    getEvents(cityname, getStartDate);
-    getCoordinates(cityname);
-  } else {
-    eventContainerEl.textContent = "City Not Found, Please Enter Valid City Name";
-  };
-};
+
 
 // Dynamically add to DOM Event List
 function showEvents(json) {
@@ -155,9 +149,58 @@ function displayHistory() {
     searchButtonEl.setAttribute("type", "button")
     searchButtonEl.classList = "button is-warning is-fullwidth";
     searchButtonEl.setAttribute("data-search", searchHistory[i])
+    searchButtonEl.setAttribute("data-date", searchDate[i])
     searchButtonEl.textContent = searchHistory[i];
     recentSearchEl.append(searchButtonEl);
   }
 };
 
+function setHistory(info, date) {
+  searchHistory.push(info);
+  searchDate.push(date);
+
+  localStorage.setItem("id", JSON.stringify(searchHistory));
+  localStorage.setItem("date", JSON.stringify(searchDate));
+  // localStorage.setItem("date", JSON.stringify(searchDate));
+  displayHistory();
+};
+
+function getHistory() {
+  var storageHistory = localStorage.getItem("id");
+  var storageHistoryDate = localStorage.getItem("date");
+  if (storageHistory, storageHistoryDate) {
+    searchHistory = JSON.parse(storageHistory);
+    searchDate = JSON.parse(storageHistoryDate);
+  } 
+  displayHistory();
+};
+
+var formSubmitHandler = function(event) {
+  event.preventDefault();
+  // get city name
+  var cityname = cityInputEl.value.trim();
+  var getStartDate = dateInputEl.value.trim();
+  if (cityname, getStartDate) {
+    getEvents(cityname, getStartDate);
+    getCoordinates(cityname);
+    setHistory(cityname, getStartDate);
+  } else {
+    eventContainerEl.textContent = "City Not Found, Please Enter Valid City Name";
+  };
+};
+
+function historyHandler (event) {
+  if (!event.target.matches("button")) {
+    return;
+  }
+  var buttonClick = event.target;
+  var search = buttonClick.getAttribute("data-search");
+  var searchDate = buttonClick.getAttribute("data-date");
+  getCoordinates(search);
+  getEvents(search, searchDate)
+};
+
+getHistory();
+
 userFormEl.addEventListener("submit", formSubmitHandler);
+recentSearchEl.addEventListener("click", historyHandler);
