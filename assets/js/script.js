@@ -77,8 +77,8 @@ function getWeather(coord) {
 
             $('#forecastDate'+i).html(date);
             $('#forecastIcon'+i).html('<img src='+iconUrl+'>');
-            $('#forecastLo'+i).html(tempLo);
-            $('#forecastHi'+i).html(tempHi);
+            $('#forecastLo'+i).html(tempLo + "\xB0" + "F");
+            $('#forecastHi'+i).html(tempHi + "\xB0" + "F");
           }
   		   },
     error: function(xhr, status, err) {
@@ -123,19 +123,19 @@ function showEvents(json) {
 
     // event title 
     var eventTitleEl = document.createElement("p");
-    eventTitleEl.classList = "title is-5";
+    eventTitleEl.classList = "title is-5 has-text-white";
     eventTitleEl.setAttribute("id", "event-title");
     eventTitleEl.textContent = events[i].name;
     
     // event date
     var eventDateEl = document.createElement("p");
-    eventDateEl.classList = "subtitle is-6";
+    eventDateEl.classList = "subtitle is-6 has-text-white";
     eventDateEl.setAttribute("id", "event-date");
     eventDateEl.textContent = "Date: " + events[i].dates.start.localDate;
 
     // event venue
     var eventVenueEl = document.createElement("p");
-    eventVenueEl.classList = "subtitle is-6 mb-4";
+    eventVenueEl.classList = "subtitle is-6 mb-4 has-text-white";
     eventVenueEl.setAttribute("id", "event-venue");
     eventVenueEl.textContent = events[i]._embedded.venues[0].name;
 
