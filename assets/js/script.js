@@ -31,6 +31,8 @@ function getCoordinates(city) {
     success: function(json) {
       getCoordinates.json = json;
       getWeather(json.coord); // this is sending only the coordinate data from the Geocoding API data that we're requesting... to the getWeather function below
+      var eventListCity = city;
+      eventCityEl.textContent = "Showing Results for: "+eventListCity+".";
     },
     error: function(err) {
       console.log(err);
@@ -96,9 +98,6 @@ function showEvents(json) {
   eventContainerEl.textContent = "";
 
   var events = json._embedded.events;
-
-  var eventListCity = cityInputEl.value.trim();
-  eventCityEl.textContent = "Showing Results for: "+eventListCity+".";
 
   // loop over events
   for (var i=0;i< 5; i++) {
