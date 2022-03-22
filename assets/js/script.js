@@ -67,14 +67,6 @@ function getWeather(coord) {
             var iconUrl = 'http://openweathermap.org/img/wn/'+iconCode+'.png';
             var tempLo = Math.round(daily[i].temp.min);
             var tempHi = Math.round(daily[i].temp.max);
-            console.log(date);
-            console.log(iconCode);
-            console.log(iconUrl);
-            console.log(tempLo);
-            console.log(tempHi);
-
-            
-
             $('#forecastDate'+i).html(date);
             $('#forecastIcon'+i).html('<img src='+iconUrl+'>');
             $('#forecastLo'+i).html(tempLo + "\xB0" + "F");
@@ -155,5 +147,17 @@ function showEvents(json) {
 
 
 }
+
+function displayHistory() {
+  recentSearchEl.innerHTML = "";
+  for (var i = 0; i <= searchHistory.length -1; i++) {
+    var searchButtonEl = document.createElement("button");
+    searchButtonEl.setAttribute("type", "button")
+    searchButtonEl.classList = "button is-warning is-fullwidth";
+    searchButtonEl.setAttribute("data-search", searchHistory[i])
+    searchButtonEl.textContent = searchHistory[i];
+    recentSearchEl.append(searchButtonEl);
+  }
+};
 
 userFormEl.addEventListener("submit", formSubmitHandler);

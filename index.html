@@ -16,17 +16,18 @@
 
   <header class="container hero is-warning mb-4">
     <div class="hero-body">
-      <p class="title is-1"><span class="icon">
+      <p class="title is-1 has-text-centered"><span class="icon">
           <i class="fas fa-calendar"></i>
         </span> Event Seeker</p>
-      <p class="subtitle is-3">Search for a city to see weather forecast and events</p>
+      <p class="subtitle is-3 has-text-centered">Search for a city to see weather forecast and events</p>
     </div>
   </header>
 
   <main class="container">
     <!-- User Input Form Start -->
     <div class="columns is-multiline">
-      <form class="column is-one-quarter" id="user-form">
+      <div class="column is-one-quarter">
+      <form class="field box ml-2" id="user-form">
         <label class="label">Search by City</label>
 
         <div class="control">
@@ -40,16 +41,26 @@
           <button class="button is-warning mt-2" id="search-btn">Find Events</button>
         </div>
       </form>
+      <!-- Search History -->
+      <div id="searched-cities" class="box ml-2 mt-3">
+        <label class="label">Recent Searches:</label>
+        <div id="recent-searches" class="buttons">
+          <!-- Buttons Created Dynamically in script.js -->
+        </div>
+      </div>
+    </div>
       <!-- Event List Container Start -->
-      <section class="column is-half">
-        <p class="title is-" id="city-search"></p>
+      <section class="column is-half mt-3">
+        <p class="title is-5 has-text-centered has-text-white" id="city-search"></p>
         <div id="event-list">
           
         </div>
       </section>
       <!-- Weather Container Start -->
-      <div class="column is-one-quarter" id="weather">
-        <div class="box">
+      <div class="column" id="weather">
+        <label class="label has-text-centered">Current 7-Day Forecast</label>
+        <!-- Forecast Day 1 -->
+        <div class="box ml-2">
           <label class="label" id="forecastDate0"></label>
           <div id="forecastIcon0"></div>
           <p class="subtitle has-text-white">
@@ -57,7 +68,8 @@
             Hi: <span id="forecastHi0"></span><br>
           </p>
         </div>
-        <div class="box">
+        <!-- Forecast Day 2 -->
+        <div class="box ml-2">
           <label class="label" id="forecastDate1"></label>
           <div id="forecastIcon1"></div>
           <p class="subtitle has-text-white">
@@ -65,7 +77,8 @@
             Hi: <span id="forecastHi1"></span><br>
           </p>
         </div>
-        <div class="box">
+        <!-- Forecast Day 3 -->
+        <div class="box ml-2">
           <label class="label" id="forecastDate2"></label>
           <div id="forecastIcon2"></div>
           <p class="subtitle has-text-white">
@@ -73,7 +86,8 @@
             Hi: <span id="forecastHi2"></span><br>
           </p>
         </div>
-        <div class="box">
+        <!-- Forecast Day 4 -->
+        <div class="box ml-2">
           <label class="label" id="forecastDate3"></label>
           <div id="forecastIcon3"></div>
           <p class="subtitle has-text-white">
@@ -81,7 +95,8 @@
             Hi: <span id="forecastHi3"></span><br>
           </p>
         </div>
-        <div class="box">
+        <!-- Forecast Day 5 -->
+        <div class="box ml-2">
           <label class="label" id="forecastDate4"></label>
           <div id="forecastIcon4"></div>
           <p class="subtitle has-text-white">
@@ -89,7 +104,8 @@
             Hi: <span id="forecastHi4"></span><br>
           </p>
         </div>
-        <div class="box">
+        <!-- Forecast Day 6 -->
+        <div class="box ml-2">
           <label class="label" id="forecastDate5"></label>
           <div id="forecastIcon5"></div>
           <p class="subtitle has-text-white">
@@ -97,7 +113,8 @@
             Hi: <span id="forecastHi5"></span><br>
           </p>
         </div>
-        <div class="box">
+        <!-- Forecast Day 7 -->
+        <div class="box ml-2">
           <label class="label" id="forecastDate6"></label>
           <div id="forecastIcon6"></div>
           <p class="subtitle has-text-white">
