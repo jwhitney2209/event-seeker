@@ -8,13 +8,30 @@ var dateInputEl = document.querySelector("#datepicker")
 
 $(function() {
   $("#datepicker").datepicker({
-    minDate: 1,
+    minDate: 0,
+    maxDate: 6,
     dateFormat: "yy-mm-dd"
   });
 });
 
-// Get Weather API
+var apiKey = "edb9f78900c4573920e4c01ff60162d2";
 
+// Get Weather API
+function getCoordinates(city) {
+  $.ajax({
+    type:"GET",
+    url:"https://api.openweathermap.org/data/2.5/weather?q="+city+"&units=imperial&appid="+apiKey,
+    async:true,
+    dataType: "json",
+    success: function(json) {
+      getCoordinates.json = json;
+      getWeather(json.coord); // this is sending only the coordinate data from the Geocoding API data that we're requesting... to the getWeather function below
+    },
+    error: function(err) {
+      console.log(err);
+    }
+  })
+}
 // Dynamically add to DOM Weather Information
 function getEvents(city, startdate) {
   $.ajax({
@@ -24,7 +41,45 @@ function getEvents(city, startdate) {
     dataType: "json",
     success: function(json) {
           getEvents.json = json;
+          // console.log(json);
   			  showEvents(json);
+  		   },
+    error: function(xhr, status, err) {
+  			  console.log(err);
+  		   }
+  });
+};
+
+function getWeather(coord) {
+  $.ajax({
+    type:"GET",
+    url:"https://api.openweathermap.org/data/2.5/onecall?lat="+coord.lat+"&lon="+coord.lon+"&units=imperial&appid="+apiKey,
+    async:true,
+    dataType: "json",
+    success: function(json) {
+          getWeather.json = json;
+          // console.log(json);
+          var daily = json.daily;
+          // console.log(daily);
+          for (i = 0; i < daily.length; i++) {
+            var date = moment(daily[i].dt*1000).format('MM-DD-YYYY');
+            var iconCode =  daily[i].weather[0].icon;
+            var iconUrl = 'http://openweathermap.org/img/wn/'+iconCode+'.png';
+            var tempLo = Math.round(daily[i].temp.min);
+            var tempHi = Math.round(daily[i].temp.max);
+            console.log(date);
+            console.log(iconCode);
+            console.log(iconUrl);
+            console.log(tempLo);
+            console.log(tempHi);
+
+            
+
+            $('#forecastDate'+i).html(date);
+            $('#forecastIcon'+i).html('<img src='+iconUrl+'>');
+            $('#forecastLo'+i).html(tempLo);
+            $('#forecastHi'+i).html(tempHi);
+          }
   		   },
     error: function(xhr, status, err) {
   			  console.log(err);
@@ -39,11 +94,11 @@ var formSubmitHandler = function(event) {
   var getStartDate = dateInputEl.value.trim();
   if (cityname, getStartDate) {
     getEvents(cityname, getStartDate);
+    getCoordinates(cityname);
   } else {
     eventContainerEl.textContent = "City Not Found, Please Enter Valid City Name";
   };
 };
-
 
 // Dynamically add to DOM Event List
 function showEvents(json) {
@@ -51,6 +106,7 @@ function showEvents(json) {
     eventContainerEl.textContent = "No Events Found";
     return;
   }
+  // clear out existing events from previous search
   eventContainerEl.textContent = "";
 
   var events = json._embedded.events;
