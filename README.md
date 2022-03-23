@@ -2,10 +2,9 @@
 
 ## Purpose❗
 USER STORY: <br>
- As a traveling blogger
- I want to search for a certain city and its current weather <br>
- So that I can decide whether or not I can attend a local outdoor event <br>
- while I am visiting
+As a traveling event blogger, I want to search for a certain city to
+see what events are happening in the area
+and its current weather so that I can decide what to pack while I am visiting.
 
    ## Table of Contents:
 1. [ GitHub ](#link-to-my-page)
@@ -20,7 +19,6 @@ USER STORY: <br>
  <a name="desc"></a>
 ## 2. Description✏️
  * Create an app that allows a user to locate an event
- * Based on current weather and time, the user can choose to attend an outdoor event
  * App will help them see current and future weather to plan accordingly
 
 
