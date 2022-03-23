@@ -2,16 +2,15 @@
 
 ## Purpose❗
 USER STORY: <br>
- As a traveling blogger
- I want to search for a certain city and its current weather <br>
- So that I can decide whether or not I can attend a local outdoor event <br>
- while I am visiting
+As a traveling event blogger, I want to search for a certain city to
+see what events are happening in the area
+and its current weather so that I can decide what to pack while I am visiting
 
    ## Table of Contents:
 1. [ GitHub ](#link-to-my-page)
 2. [ Description ](#desc)
 3. [ Built With ](#built-with)
-4. [ Steps ](#steps)
+4. [ Preview ](#screenshot)
 5. [ Helpful Links ](#help)
 
  <a name="link-to-my-page"></a>
@@ -37,8 +36,14 @@ USER STORY: <br>
  * OpenWeather API
  * TicketMaster API
 
-  <a name="steps"></a>
- ## 4. Steps:ladder:
+  <a name="screenshot"></a>
+ ## 4. Preview:camera:
+
+ [First Page of Event Seeker](assets/event-seeker-search.png)
+Fist page of the app displaying city name, a chosen date, and the first five events in that city. <br>
+When choosing the 'Get Tickets' button, it takes it to another page that describes in more detail. <br>
+The event page shows times, prices and venue.
+ [Choosing First Event](assets/first-event.png)
 
  <a name="help"></a>
   ## 5. Helpful Links:link:
