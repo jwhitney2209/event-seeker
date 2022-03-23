@@ -14,35 +14,34 @@
 
 <body>
 
-  <header class="container hero is-warning mb-4">
+  <section class="container hero is-warning">
     <div class="hero-body">
       <p class="title is-1 has-text-centered"><span class="icon">
           <i class="fas fa-calendar"></i>
         </span> Event Seeker</p>
       <p class="subtitle is-3 has-text-centered">Search for a city to see weather forecast and events</p>
     </div>
-  </header>
+  </section>
 
-  <main class="container">
+  <div class="container section">
     <!-- User Input Form Start -->
     <div class="columns is-multiline">
       <div class="column is-one-quarter">
-      <form class="field box ml-2" id="user-form">
+      <form class="field" id="user-form">
         <label class="label">Search by City</label>
-
         <div class="control">
           <input id="city-name" class="input" type="text" placeholder="ex: San Antonio">
         </div>
         <div id="date-selection" class="control">
-          <label class="label mt-2" for="datepicker">Select Your Date</label>
+          <label class="label" for="datepicker">Select Your Date</label>
             <input type="text" class="input" id="datepicker" placeholder="Date" autocomplete="off">
         </div>
         <div class="control">
-          <button class="button is-warning mt-2" id="search-btn">Find Events</button>
+          <button class="button is-warning" id="search-btn">Find Events</button>
         </div>
       </form>
       <!-- Search History -->
-      <div id="searched-cities" class="box ml-2 mt-3">
+      <div id="searched-cities">
         <label class="label">Recent Searches:</label>
         <div id="recent-searches" class="buttons">
           <!-- Buttons Created Dynamically in script.js -->
@@ -50,8 +49,8 @@
       </div>
     </div>
       <!-- Event List Container Start -->
-      <section class="column is-half mt-3">
-        <p class="title is-5 has-text-centered has-text-white" id="city-search"></p>
+      <section class="column is-half">
+        <p class="label has-text-centered has-text-white" id="city-search"></p>
         <div id="event-list">
           
         </div>
@@ -60,66 +59,52 @@
       <div class="column" id="weather">
         <label class="label has-text-centered">Current 7-Day Forecast</label>
         <!-- Forecast Day 1 -->
-        <div class="box ml-2">
+        <div class="box">
           <label class="label" id="forecastDate0"></label>
           <div id="forecastIcon0"></div>
-          <p class="subtitle is-6 has-text-white">
-            Lo: <span id="forecastLo0"></span><br>
-            Hi: <span id="forecastHi0"></span><br>
+          <p class="subtitle is-6 has-text-white" id="forecastTemp0">
           </p>
         </div>
         <!-- Forecast Day 2 -->
-        <div class="box ml-2">
+        <div class="box">
           <label class="label" id="forecastDate1"></label>
           <div id="forecastIcon1"></div>
-          <p class="subtitle is-6 has-text-white">
-            Lo: <span id="forecastLo1"></span><br>
-            Hi: <span id="forecastHi1"></span><br>
+          <p class="subtitle is-6 has-text-white" id="forecastTemp1">
           </p>
         </div>
         <!-- Forecast Day 3 -->
-        <div class="box ml-2">
+        <div class="box">
           <label class="label" id="forecastDate2"></label>
           <div id="forecastIcon2"></div>
-          <p class="subtitle is-6 has-text-white">
-            Lo: <span id="forecastLo2"></span><br>
-            Hi: <span id="forecastHi2"></span><br>
+          <p class="subtitle is-6 has-text-white" id="forecastTemp2">
           </p>
         </div>
         <!-- Forecast Day 4 -->
-        <div class="box ml-2">
+        <div class="box">
           <label class="label" id="forecastDate3"></label>
           <div id="forecastIcon3"></div>
-          <p class="subtitle is-6 has-text-white">
-            Lo: <span id="forecastLo3"></span><br>
-            Hi: <span id="forecastHi3"></span><br>
+          <p class="subtitle is-6 has-text-white" id="forecastTemp3">
           </p>
         </div>
         <!-- Forecast Day 5 -->
-        <div class="box ml-2">
+        <div class="box">
           <label class="label" id="forecastDate4"></label>
           <div id="forecastIcon4"></div>
-          <p class="subtitle is-6 has-text-white">
-            Lo: <span id="forecastLo4"></span><br>
-            Hi: <span id="forecastHi4"></span><br>
+          <p class="subtitle is-6 has-text-white" id="forecastTemp4">
           </p>
         </div>
         <!-- Forecast Day 6 -->
-        <div class="box ml-2">
+        <div class="box">
           <label class="label" id="forecastDate5"></label>
           <div id="forecastIcon5"></div>
-          <p class="subtitle is-6 has-text-white">
-            Lo: <span id="forecastLo5"></span><br>
-            Hi: <span id="forecastHi5"></span><br>
+          <p class="subtitle is-6 has-text-white" id="forecastTemp5">
           </p>
         </div>
         <!-- Forecast Day 7 -->
-        <div class="box ml-2">
+        <div class="box">
           <label class="label" id="forecastDate6"></label>
           <div id="forecastIcon6"></div>
-          <p class="subtitle is-6 has-text-white">
-            Lo: <span id="forecastLo6"></span><br>
-            Hi: <span id="forecastHi6"></span><br>
+          <p class="subtitle is-6 has-text-white" id="forecastTemp6">
           </p>
         </div>
       </div>
