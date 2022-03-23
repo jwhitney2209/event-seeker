@@ -76,8 +76,11 @@ function getWeather(coord) {
             var tempHi = Math.round(daily[i].temp.max);
             $('#forecastDate'+i).html(date);
             $('#forecastIcon'+i).html('<img src='+iconUrl+'>');
-            $('#forecastLo'+i).html(tempLo + "\xB0" + "F");
-            $('#forecastHi'+i).html(tempHi + "\xB0" + "F");
+            $('#forecastTemp'+i).html(
+              "Lo: " + tempLo + "\xB0" + "F" + " Hi: " + tempHi + "\xB0" + "F"
+            );
+            // $('#forecastLo'+i).html();
+            // $('#forecastHi'+i).html();
           }
   		   },
     error: function(xhr, status, err) {
@@ -125,10 +128,9 @@ function showEvents(json) {
     eventVenueEl.textContent = events[i]._embedded.venues[0].name;
 
     // get tickets
-    var getTicketEl = document.createElement("button");
-    getTicketEl.classList = "button is-info";
+    var getTicketEl = document.createElement("div");
     getTicketEl.setAttribute("id", "ticketsBtn");
-    getTicketEl.innerHTML = "<a href='"+events[i].url+"' target='_blank'>Get Tickets</a>";
+    getTicketEl.innerHTML = "<a class='button is-info' href='"+events[i].url+"' target='_blank'>Get Tickets</a>";
 
     eventBoxEl.append(eventTitleEl);
     eventBoxEl.append(eventDateEl);
