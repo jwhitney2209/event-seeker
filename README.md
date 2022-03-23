@@ -18,7 +18,7 @@ and its current weather so that I can decide what to pack while I am visiting.
  <a name="link-to-my-page"></a>
  ## 1. Link To Project in My Github Pages:octocat:
  
-[Event Seeker]()
+[Event Seeker](https://jwhitney2209.github.io/event-seeker/)
 
  <a name="desc"></a>
 ## 2. Description✏️
