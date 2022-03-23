@@ -41,7 +41,7 @@ and its current weather so that I can decide what to pack while I am visiting.
 
  ## 4. Preview:camera:
 
- [First Page of Event Seeker](assets/event-seeker-search.png)
+ [First Page of Event Seeker](assets/event-seeker-page.png)
 Fist page of the app displaying city name, a chosen date, and the first five events in that city. <br>
 When choosing the 'Get Tickets' button, it takes it to another page that describes in more detail. <br>
 The event page shows times, prices and venue.
