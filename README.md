@@ -4,7 +4,9 @@
 USER STORY: <br>
 As a traveling event blogger, I want to search for a certain city to
 see what events are happening in the area
-and its current weather so that I can decide what to pack while I am visiting
+
+and its current weather so that I can decide what to pack while I am visiting.
+
 
    ## Table of Contents:
 1. [ GitHub ](#link-to-my-page)
@@ -21,7 +23,6 @@ and its current weather so that I can decide what to pack while I am visiting
  <a name="desc"></a>
 ## 2. Description✏️
  * Create an app that allows a user to locate an event
- * Based on current weather and time, the user can choose to attend an outdoor event
  * App will help them see current and future weather to plan accordingly
 
 
@@ -37,6 +38,7 @@ and its current weather so that I can decide what to pack while I am visiting
  * TicketMaster API
 
   <a name="screenshot"></a>
+
  ## 4. Preview:camera:
 
  [First Page of Event Seeker](assets/event-seeker-search.png)
@@ -44,6 +46,7 @@ Fist page of the app displaying city name, a chosen date, and the first five eve
 When choosing the 'Get Tickets' button, it takes it to another page that describes in more detail. <br>
 The event page shows times, prices and venue.
  [Choosing First Event](assets/first-event.png)
+
 
  <a name="help"></a>
   ## 5. Helpful Links:link:
