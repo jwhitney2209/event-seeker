@@ -33,8 +33,8 @@ and its current weather so that I can decide what to pack while I am visiting.
  * OpenWeather API
  * TicketMaster API
 
-  <a name="steps"></a>
- ## 4. Steps:ladder:
+  <a name="screenshot"></a>
+ ## 4. Screenshot:
 
  <a name="help"></a>
   ## 5. Helpful Links:link:
