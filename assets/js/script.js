@@ -10,15 +10,6 @@ var recentSearchEl = document.querySelector("#recent-searches");
 var searchHistory = [];
 var searchDate = [];
 
-// datepicker for selecting event day user is looking for
-$(function() {
-  $("#datepicker").datepicker({
-    minDate: 0,
-    maxDate: 6,
-    dateFormat: "yy-mm-dd"
-  });
-});
-
 var apiKey = "edb9f78900c4573920e4c01ff60162d2";
 
 // Get Weather API
